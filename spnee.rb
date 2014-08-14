@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'json'
 set :server, 'thin'
-connections = []
 
-post '/solve' do
+post '/generic/visit/:siteid' do
   jdata = JSON.parse(params[:data])
-  puts jdata
+  siteid = params[:siteid]
+  print siteid, ' ', jdata; puts
 end
