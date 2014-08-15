@@ -6,6 +6,7 @@ module GenericManager
     jdata = JSON.parse(params[:data])
     siteid = params[:siteid]
     print siteid, ' ', jdata; puts
+    RabbitMQ.publish_message_trident jdata
   end
 
 end

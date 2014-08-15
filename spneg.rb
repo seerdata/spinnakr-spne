@@ -1,4 +1,6 @@
+require 'amqp'
 require 'sinatra/base'
+require 'yaml'
 require_relative 'lib/generic_manager'
 require_relative 'lib/rabbitmq'
 

@@ -24,6 +24,10 @@ class RabbitMQ
     end
   end
 
+  def self.publish_message_trident(message_hash)
+    publish_message message_hash, 'test.spnee.trident'
+  end
+
   def self.publish_message_visitor(message_hash)
     publish_message message_hash, 'test.spnee.visitors'
   end
