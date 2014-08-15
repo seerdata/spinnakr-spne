@@ -1,0 +1,12 @@
+database: postgres://ma@localhost/spinnakr_development
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  user: guest
+
+local_cache:
+  redis:
+    host: localhost
+  expiration_days: 7
+  

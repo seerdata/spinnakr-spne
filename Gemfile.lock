@@ -1,6 +1,11 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    amq-protocol (1.9.2)
+    amqp (1.5.0)
+      amq-protocol (>= 1.9.2)
+      eventmachine
+    eventmachine (1.0.3)
     kgio (2.9.2)
     mime-types (2.3)
     netrc (0.7.7)
@@ -25,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amqp
   rest-client
   sinatra
   unicorn
