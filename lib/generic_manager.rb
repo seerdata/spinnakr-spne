@@ -2,11 +2,11 @@ require 'json'
 
 module GenericManager
 
-  def handle_generic_visit(siteid,json)
-    jdata = JSON.parse(params[:data])
+  def handle_generic_event(siteid,json)
+    message = JSON.parse(params[:data])
     siteid = params[:siteid]
-    print siteid, ' ', jdata; puts
-    RabbitMQ.publish_message_trident jdata
+    print siteid, ' ', message; puts
+    RabbitMQ.publish_message(message, "test.spnee.event")
   end
 
 end

@@ -1,15 +1,13 @@
 require 'amqp'
 require 'sinatra/base'
 require 'yaml'
-require_relative 'lib/generic_manager'
 require_relative 'lib/rabbitmq'
+require_relative 'routes/api'
 
 class Spneg < Sinatra::Base
 
-  include GenericManager
-
-  post '/generic/visit/:siteid' do
-    handle_generic_visit(params[:siteid],params[:data])
+  get '/ping' do
+    'pong'
   end
 
   error do
