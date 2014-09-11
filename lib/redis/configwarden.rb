@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'sinatra/json'
 require 'warden'
 require_relative './rediswarden'
 

@@ -1,4 +1,3 @@
-require 'sinatra/json'
 require 'warden'
 require_relative './../lib/generic_manager'
 
@@ -9,7 +8,7 @@ class Spneg < Sinatra::Base
 
   get '/' do
     content_type :json
-    json({ message: "Hello Sds" })
+    JSON::generate({ message: "Hello Sds" })
   end
 
   get '/api' do
@@ -25,13 +24,13 @@ class Spneg < Sinatra::Base
       env['warden'].authenticate!(:access_token)
 
       content_type :json
-      json({ message: "This is an authenticated request!" })
+      JSON::generate({ message: "This is an authenticated request!" })
   end
 
   # This is the route that unauthorized requests gets redirected to.
   post '/unauthenticated' do
       content_type :json
-      json({ message: "Sorry, this request can not be authenticated. Try again." })
+      JSON::generate({ message: "Sorry, this request can not be authenticated. Try again." })
   end
 
 end
