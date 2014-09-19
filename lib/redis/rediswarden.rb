@@ -2,7 +2,7 @@ require 'redis'
 require 'securerandom'
 
 REDIS_OPTIONS = {
- #'host' => '10.0.1.104'
+ #'host' => '10.0.1.39'
  'host' => 'localhost'
 }
 
