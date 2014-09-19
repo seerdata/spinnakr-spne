@@ -1,4 +1,5 @@
 require 'json'
+require_relative './redis/redisevent'
 
 module GenericManager
 
@@ -10,7 +11,9 @@ module GenericManager
   end
 
   def handle_rec_event(project,dimension,key)
+    redisevent = RedisEvent.new
     print project + ' ' + dimension + ' ' + key; puts
+    redisevent.get_key(project,dimension,key)
   end
 
 end
