@@ -33,4 +33,9 @@ class Spneg < Sinatra::Base
       JSON::generate({ message: "Sorry, this request can not be authenticated. Try again." })
   end
 
+  # These API calls are for the recs / answers
+
+  get '/api/1.0/event/:project/:dimension/:key' do
+    handle_rec_event(params[:project],params[:dimension],params[:key])
+  end
 end

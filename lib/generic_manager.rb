@@ -9,4 +9,8 @@ module GenericManager
     RabbitMQ.publish_message(message, "test.spnee.event")
   end
 
+  def handle_rec_event(project,dimension,key)
+    print project + ' ' + dimension + ' ' + key; puts
+  end
+
 end
