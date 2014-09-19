@@ -1,10 +1,6 @@
 require 'json'
 require 'redis'
-
-REDIS_OPTIONS = {
- #'host' => '10.0.1.39'
- 'host' => 'localhost'
-}
+require_relative './redisoptions'
 
 class RedisEvent
 
@@ -24,7 +20,6 @@ class RedisEvent
     hmap = @redisc.hgetall(key)
     json = JSON::generate(hmap)
   end
-
 
 end
 

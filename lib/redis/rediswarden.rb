@@ -1,10 +1,6 @@
 require 'redis'
 require 'securerandom'
-
-REDIS_OPTIONS = {
- #'host' => '10.0.1.39'
- 'host' => 'localhost'
-}
+require_relative './redisoptions'
 
 class RedisWarden
 
