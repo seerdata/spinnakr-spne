@@ -7,8 +7,8 @@ class RedisWarden
   def initialize
     @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
     @db_zero = 0
-    @db_uuid = 1
-    @db_ap = 2
+    @db_uuid = 10
+    @db_ap = 11
   end
 
   def get_hash_from_apkey(apkey)
@@ -75,23 +75,21 @@ class RedisWarden
   end
 end
 
-=begin
 rw = RedisWarden.new
-uuid12 = rw.get_uuid_from_apkey('1','2')
-puts uuid12
-uuid34 = rw.get_uuid_from_apkey('3','4')
-puts uuid34
-apkey12 = rw.get_apkey_from_uuid(uuid12)
-puts apkey12
-apkey34 = rw.get_apkey_from_uuid(uuid34)
-puts apkey34
-hash12 = rw.get_hash_from_apkey(apkey12)
-puts hash12
-hash34 = rw.get_hash_from_apkey(apkey34)
-puts hash34
+uuid11 = rw.get_uuid_from_apkey('1','1')
+puts uuid11
+uuid21 = rw.get_uuid_from_apkey('2','1')
+puts uuid21
+apkey11 = rw.get_apkey_from_uuid(uuid11)
+puts apkey11
+apkey21 = rw.get_apkey_from_uuid(uuid21)
+puts apkey21
+hash11 = rw.get_hash_from_apkey(apkey11)
+puts hash11
+hash21 = rw.get_hash_from_apkey(apkey21)
+puts hash21
 
 # Test Deleting Keys
 
-rw.delete_uuid(uuid12)
-rw.delete_apkey('3','4')
-=end
+rw.delete_uuid(uuid11)
+rw.delete_apkey('2','1')
