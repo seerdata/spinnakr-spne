@@ -12,8 +12,11 @@ module GenericManager
 
   def handle_rec_event(project,dimension,key)
     redisevent = RedisEvent.new
-    print project + ' ' + dimension + ' ' + key; puts
-    redisevent.get_key(project,dimension,key)
+    # Eventually we will pass the token in here as well
+    # so that we can use it to get the db_number
+    db_number = redisevent.get_db_from_token
+    print db_number + ' ' + project + ' ' + dimension + ' ' + key; puts
+    redisevent.get_json(db_number,project,dimension,key)
   end
 
 end
