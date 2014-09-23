@@ -38,6 +38,7 @@ class RedisWarden
       @redisc.hset uuid, 'project', project.to_s
       @redisc.select @db_ap
       @redisc.hset apkey, 'uuid', uuid
+      getDbNumber_from_accountid(account.to_s)
       @redisc.select @db_zero
     end
     uuid
@@ -120,7 +121,9 @@ hash11 = rw.get_hash_from_apkey(apkey11)
 puts hash11
 hash21 = rw.get_hash_from_apkey(apkey21)
 puts hash21
+=end
 
+=begin
 # Test Deleting Keys
 
 rw.delete_uuid(uuid11)
