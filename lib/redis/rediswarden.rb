@@ -100,9 +100,11 @@ class RedisWarden
 
 end
 
+=begin
 rw = RedisWarden.new
 db_number = rw.getDbNumber_from_accountid('3')
 print 'db_number = ', db_number; puts
+=end
 
 =begin
 rw = RedisWarden.new
