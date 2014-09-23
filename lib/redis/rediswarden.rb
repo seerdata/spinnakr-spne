@@ -9,6 +9,9 @@ class RedisWarden
     @db_zero = 0
     @db_uuid = 10
     @db_ap = 11
+    @db_start = 100
+    @key_db_next = 'nextdb'
+    @key_db_mapping = 'hm:accountid:db'
   end
 
   def get_hash_from_apkey(apkey)
@@ -73,8 +76,35 @@ class RedisWarden
       @redisc.del uuid
     end
   end
+
+  def getDbNumber_from_accountid(account)
+    @redisc.select @db_ap
+    db_number = @redisc.hget(@key_db_mapping,account)
+    if db_number == nil
+      print 'db_number does not exist'; puts
+      nextdb = @redisc.get @key_db_next
+      if nextdb == nil
+        print 'nextdb does not exist'; puts
+        db_number = @db_start
+        next_db_number = @db_start + 1
+        @redisc.set(@key_db_next, next_db_number)
+      else
+        db_number = nextdb.to_i
+        next_db_number = nextdb.to_i + 1
+        @redisc.set(@key_db_next, next_db_number)
+      end
+      @redisc.hset(@key_db_mapping,account,db_number.to_s)
+    end
+    db_number
+  end
+
 end
 
+rw = RedisWarden.new
+db_number = rw.getDbNumber_from_accountid('3')
+print 'db_number = ', db_number; puts
+
+=begin
 rw = RedisWarden.new
 uuid11 = rw.get_uuid_from_apkey('1','1')
 puts uuid11
@@ -93,3 +123,4 @@ puts hash21
 
 rw.delete_uuid(uuid11)
 rw.delete_apkey('2','1')
+=end
