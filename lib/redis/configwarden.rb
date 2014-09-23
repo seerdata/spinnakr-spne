@@ -29,15 +29,19 @@ Warden::Strategies.add(:access_token) do
     def authenticate!
         access_granted = false
         mytoken_uuid = request.env["HTTP_ACCESS_TOKEN"]
-        print 'token = ', mytoken_uuid; puts
         rw = RedisWarden.new
         apkey = rw.get_apkey_from_uuid(mytoken_uuid)
-        print 'apkey = ', apkey; puts
-        #access_granted = (request.env["HTTP_ACCESS_TOKEN"] == 'opensesame')
         if apkey != nil
           access_granted = true
+          newuser = Hash.new
+          newuser['uuid'] = mytoken_uuid
+          myarray = apkey.split(':')
+          newuser['account'] = myarray[0]
+          newuser['project'] = myarray[1]
+          dbnumber = rw.getDbNumber_from_accountid(myarray[0])
+          newuser['dbnumber'] = dbnumber
         end
-        !access_granted ? fail!("Could not log in") : success!(access_granted)
+        !access_granted ? fail!("Could not log in") : success!(newuser)
     end
 end
 

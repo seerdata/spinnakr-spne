@@ -35,7 +35,10 @@ class Spneg < Sinatra::Base
 
   # These API calls are for the recs / answers
 
-  get '/api/1.0/event/:project/:dimension/:key' do  
-    handle_rec_event(params[:project],params[:dimension],params[:key])
+  get '/api/1.0/event/:project/:dimension/:key' do
+    env['warden'].authenticate!(:access_token)
+    newuser = env['warden'].user
+    dbnumber = newuser['dbnumber']
+    handle_rec_event(dbnumber,params[:project],params[:dimension],params[:key])
   end
 end
