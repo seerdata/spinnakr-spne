@@ -14,7 +14,7 @@ module GenericManager
     redisevent = RedisEvent.new
     # Eventually we will pass the token in here as well
     # so that we can use it to get the db_number
-    db_number = redisevent.get_db_from_token
+    db_number = '100'
     print db_number + ' ' + project + ' ' + dimension + ' ' + key; puts
     redisevent.get_json(db_number,project,dimension,key)
   end
