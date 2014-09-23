@@ -55,7 +55,5 @@ class RedisEvent
 end
 
 #rse = RedisEvent.new
-#puts rse.get_key("1","job-skills","android")
-#rse.get_primary_keys_from_set('100','1','job-skills','ios')
 #json = rse.get_json('100','1','job-skills','ios')
 #print json; puts
