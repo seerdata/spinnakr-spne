@@ -32,12 +32,9 @@ q = channel.queue("generic", :durable => true, :auto_delete => false)
 
 q.subscribe do |delivery_info, properties, payload|
   #puts "[consumer] #{q.name} received a message: #{payload}"
-  hm = transform_payload(payload)
-  print hm; puts
-=begin
+  transformedjson = transform_payload(payload)
   response = RestClient.post 'http://localhost:4567/api/1.0/event/151',
-              :data => payload, :content_type => :json, :accept => :json
-=end
+              :data => transformedjson, :content_type => :json, :accept => :json
 
 end
 
