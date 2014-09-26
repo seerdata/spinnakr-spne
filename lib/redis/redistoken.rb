@@ -2,7 +2,7 @@ require 'redis'
 require 'securerandom'
 require_relative './redisoptions'
 
-class RedisWarden
+class RedisToken
 
   def initialize
     @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
@@ -102,13 +102,13 @@ class RedisWarden
 end
 
 =begin
-rw = RedisWarden.new
+rw = RedisToken.new
 db_number = rw.getDbNumber_from_accountid('3')
 print 'db_number = ', db_number; puts
 =end
 
 =begin
-rw = RedisWarden.new
+rw = RedisToken.new
 uuid11 = rw.get_uuid_from_apkey('1','1')
 puts uuid11
 uuid21 = rw.get_uuid_from_apkey('2','1')
