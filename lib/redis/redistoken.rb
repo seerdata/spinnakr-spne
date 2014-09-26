@@ -44,6 +44,25 @@ class RedisToken
     uuid
   end
 
+# This is mainly used for testing when you want to create
+# a uuid, account and project
+  def set_uuid_account_project(uuidin, account, project)
+    apkey = get_apkey_from_account_project account, project
+    @redisc.select @db_ap
+    uuid = @redisc.hget(apkey,'uuid')
+    if uuid == nil
+      puts 'account project key does not exist, creating a new uuid'
+      uuid = uuidin
+      @redisc.select @db_uuid
+      @redisc.hset uuid, 'account', account.to_s
+      @redisc.hset uuid, 'project', project.to_s
+      @redisc.select @db_ap
+      @redisc.hset apkey, 'uuid', uuid
+      getDbNumber_from_accountid(account.to_s)
+      @redisc.select @db_zero
+    end
+  end
+
   def get_apkey_from_uuid(uuid)
     apkey = nil
     @redisc.select @db_uuid
