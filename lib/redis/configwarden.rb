@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'warden'
-require_relative './rediswarden'
+require_relative './redistoken'
 
 class Spneg < Sinatra::Base
 
@@ -29,7 +29,7 @@ Warden::Strategies.add(:access_token) do
     def authenticate!
         access_granted = false
         mytoken_uuid = request.env["HTTP_ACCESS_TOKEN"]
-        rw = RedisWarden.new
+        rw = RedisToken.new
         apkey = rw.get_apkey_from_uuid(mytoken_uuid)
         if apkey != nil
           access_granted = true
