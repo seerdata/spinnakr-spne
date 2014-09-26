@@ -22,6 +22,18 @@ class RedisToken
     myhash
   end
 
+  def get_account_from_apkey(apkey)
+    myhash = {}
+    myarray = apkey.split(':')
+    myarray[0]
+  end
+
+  def get_project_from_apkey(apkey)
+    myhash = {}
+    myarray = apkey.split(':')
+    myarray[1]
+  end
+
   def get_apkey_from_account_project(account, project)
     key = account.to_s + ':' + project.to_s
   end
