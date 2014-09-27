@@ -26,7 +26,7 @@ Then one brings up Spn.ee
 Then you can run in the test directory in Spn.ee
 
 ```
-ruby tokentransform.rb
+ruby restcustomer.rb
 ```
 
 Going back to the window that you brought Spn.ee up in you will see
@@ -49,5 +49,14 @@ If you want to look at the data placed on the **generic** queue instead of
 looking in the Spn.ee console you can run this
 
 ```
+ruby stormqueue.rb
+```
+
+So in summary this is the order.
+
+```
+ruby sim.rb
+unicorn -p 4567
+ruby restcustomer.rb
 ruby stormqueue.rb
 ```
