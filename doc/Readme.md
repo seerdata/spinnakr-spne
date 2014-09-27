@@ -19,7 +19,7 @@ with this command in the customer-generic-simulator
 ruby sim.rb
 ```
 
-This puts JSON messages on the Rabbitmq queue called **generic**.
+This puts JSON messages on the Rabbitmq queue called **customer**.
 
 Then one brings up Spn.ee
 
@@ -41,3 +41,6 @@ In other words the token gets transformed into the new JSON
 "key"=>"chrome", "value"=>3, "created_at"=>"2014-09-25 12:06:24 -0700",
 "interval"=>["weeks"], "calculation"=>["sum", "average", "percentage"]}
 ```
+In this case the message gets taken off the **customer** queue, transformed,
+and then placed on the **generic** queue.  Justin now takes over and does
+the storm processing...
