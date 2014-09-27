@@ -7,7 +7,7 @@ module GenericManager
     message = JSON.parse(params[:data])
     siteid = params[:siteid]
     print siteid, ' ', message; puts
-    RabbitMQ.publish_message(message, "test.spnee.event")
+    RabbitMQ.publish_message(message, "test.spnee.generic")
   end
 
   def handle_rec_event(dbnumber,project,dimension,key)
