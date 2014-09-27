@@ -44,3 +44,10 @@ In other words the token gets transformed into the new JSON
 In this case the message gets taken off the **customer** queue, transformed,
 and then placed on the **generic** queue.  Justin now takes over and does
 the storm processing...
+
+If you want to look at the data placed on the **generic** queue instead of
+looking in the Spn.ee console you can run this
+
+```
+ruby stormqueue.rb
+```
