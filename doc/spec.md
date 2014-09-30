@@ -1,5 +1,8 @@
 This page will serve as a directoy of specs for the new **generic** Spn.ee system.
 
+[Event Spec]
+(https://github.com/stormasm/spinnakr-generic-ds/blob/master/doc/eventspec.md)
+
 For now I will outline key concepts of recent that we have discussed.
 
 These concepts will eventually get merged into one of the other already
