@@ -11,9 +11,10 @@ class Transform
         project = rt.get_project_from_apkey(apkey)
         dbnumber = rt.getDbNumber_from_accountid(account)
         print key, ' ', value, ' ', apkey, ' ', account, ' ', project, ' ', dbnumber; puts
-        hm['account'] = account
-        hm['project'] = project
-        hm['dbnumber'] = dbnumber
+        # These are integers
+        hm['account_id'] = account.to_i
+        hm['project_id'] = project.to_i
+        hm['dbnumber'] = dbnumber.to_i
       else
         hm[key] = value
        end
