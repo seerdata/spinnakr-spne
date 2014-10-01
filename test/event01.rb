@@ -5,5 +5,5 @@ puts response
 
 puts
 
-response = RestClient.get 'http://localhost:4567/api/1.0/event/2/job-skills/ruby', :content_type => :json, :accept => :json, :access_token => '25f32255-aaeb-4d2f-8988-26494bc4d58d'
+response = RestClient.get 'http://localhost:4567/api/1.0/event/2/job-skills/java', :content_type => :json, :accept => :json, :access_token => '25f32255-aaeb-4d2f-8988-26494bc4d58d'
 puts response
