@@ -42,10 +42,10 @@ In other words the token gets transformed into the new JSON
 "interval"=>["weeks"], "calculation"=>["sum", "average", "percentage"]}
 ```
 In this case the message gets taken off the **customer** queue, transformed,
-and then placed on the **generic** queue.  Justin now takes over and does
+and then placed on the **generic** exchange.  Justin now takes over and does
 the storm processing...
 
-If you want to look at the data placed on the **generic** queue instead of
+If you want to look at the data placed on the **messages** queue instead of
 looking in the Spn.ee console you can run this
 
 ```
