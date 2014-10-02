@@ -1,17 +1,42 @@
 require 'rest_client'
+require 'redis'
+require_relative './../lib/redis/redisoptions'
 
-# DB 100, project 1
-response = RestClient.get 'http://localhost:4567/api/1.0/event/1/job-skills/python', :content_type => :json, :accept => :json, :access_token => '104a5866-b844-4186-9322-59cacdcec297'
-puts response
+class Event01
 
-puts
+  def initialize
+    @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
+    @db_uuid = 10
+    @job_url = 'http://localhost:4567/api/1.0/event/job-skills/'
+  end
 
-# DB 100, project 2
-response = RestClient.get 'http://localhost:4567/api/1.0/event/2/job-skills/ruby', :content_type => :json, :accept => :json, :access_token => '25f32255-aaeb-4d2f-8988-26494bc4d58d'
-puts response
+  def get_uuids
+    @redisc.select @db_uuid
+    @redisc.keys '*'
+  end
 
-puts
+  def get_urls
+    arr = Array.new
+    ['ios','android','java','python','ruby'].each do |job|
+      myurl = @job_url + job
+      arr.push(myurl)
+    end
+    arr
+  end
 
-# DB 101, project 1
-response = RestClient.get 'http://localhost:4567/api/1.0/event/1/job-skills/android', :content_type => :json, :accept => :json, :access_token => '3c953ea8-a620-45bf-8959-6feee5d57c33'
-puts response
+  def get_data(url,uuid)
+    response = RestClient.get url, :content_type => :json, :accept => :json, :access_token => uuid
+  end
+end
+
+e01 = Event01.new
+uuids = e01.get_uuids
+urls = e01.get_urls
+uuids.each do |uuid|
+  print uuid; puts
+  urls.each do |url|
+    print url; puts
+    response = e01.get_data(url,uuid)
+    print response; puts; puts
+  end
+end
