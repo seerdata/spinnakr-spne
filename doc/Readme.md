@@ -1,4 +1,7 @@
-The uuids in this file should
+The
+[uuids]
+(http://en.wikipedia.org/wiki/Universally_unique_identifier)
+in this file should
 
 https://github.com/stormasm/customer-generic-simulator/blob/master/lib/msgbase.rb
 
