@@ -9,16 +9,15 @@ class GenToken
     end
     my_token_uuid
   end
-
-  def get_token_id
-    my_token_uuid = [
-      '104a5866-b844-4186-9322-59cacdcec297',
-      '25f32255-aaeb-4d2f-8988-26494bc4d58d',
-      '3c953ea8-a620-45bf-8959-6feee5d57c33',
-    ].sample
-  end
 end
 
+#
+# These calls have to be here instead of in redistoken
+# because redistoken can NOT be poluted with test code
+#
+# These tokens have to match up with the tokens in the
+# customer simulator in lib/msgbase.rb
+#
 rt = RedisToken.new
 rt.set_uuid_account_project('104a5866-b844-4186-9322-19cacdcec297','1','1')
 rt.set_uuid_account_project('15f32255-aaeb-4d2f-8988-26494bc4d58d','1','2')
@@ -33,6 +32,8 @@ rt.set_uuid_account_project('3339efca-5e99-4ea9-9cff-2075136e04bf','3','2')
 rt.set_uuid_account_project('35b010e6-3a0d-421c-9c25-354a7a1336ae','3','3')
 
 =begin
+This is only here if you want to crank out
+a bunch of test tokens
 gt = GenToken.new
 tokens = gt.get_random_token
 tokens.each do |token|

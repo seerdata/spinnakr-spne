@@ -4,11 +4,11 @@ The
 or
 [SecureRandoms]
 (http://ruby-doc.org/stdlib-2.1.2/libdoc/securerandom/rdoc/SecureRandom.html)
-in this file should
+in this file
 
 https://github.com/stormasm/customer-generic-simulator/blob/master/lib/msgbase.rb
 
-match up with the uuids in this file
+should match up with the uuids in this file
 
 https://github.com/stormasm/spinnakr-spne/blob/master/test/gentoken.rb
 
