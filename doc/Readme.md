@@ -16,10 +16,10 @@ https://github.com/stormasm/customer-generic-simulator/tree/master/lib
 with this command in the customer-generic-simulator
 
 ```
-ruby sim.rb
+ruby sim.rb -m job-skills
 ```
 
-This puts JSON messages on the Rabbitmq queue called **customer**.
+This puts JSON messages on the RabbitMQ queue called **customer**.
 
 Then one brings up Spn.ee
 
@@ -37,7 +37,7 @@ to see on the internal Spinnakr network.
 In other words the token gets transformed into the new JSON
 
 ```
-{"account"=>"1", "project"=>"2", "dbnumber"=>"100", "dimension"=>"visit-useragent",
+{"account_id"=>1, "project_id"=>2, "dbnumber"=>100, "dimension"=>"visit-useragent",
 "key"=>"chrome", "value"=>3, "created_at"=>"2014-09-25 12:06:24 -0700",
 "interval"=>["weeks"], "calculation"=>["sum", "average", "percentage"]}
 ```
@@ -55,8 +55,19 @@ ruby stormqueue.rb
 So in summary this is the order.
 
 ```
-ruby sim.rb
+ruby sim.rb -m job-skills
 unicorn -p 4567
 ruby restcustomer.rb
+```
+
+Now that the event data from storm got put into redis DB 100 or DB 101,
+you can grab the data off of redis with this command.
+
+```
+ruby event01.rb
+```
+
+And when storm is not running you can see the data here.
+```
 ruby stormqueue.rb
 ```
