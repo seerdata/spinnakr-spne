@@ -1,6 +1,9 @@
 The
 [uuids]
 (http://en.wikipedia.org/wiki/Universally_unique_identifier)
+or
+[SecureRandoms]
+(http://ruby-doc.org/stdlib-2.1.2/libdoc/securerandom/rdoc/SecureRandom.html)
 in this file should
 
 https://github.com/stormasm/customer-generic-simulator/blob/master/lib/msgbase.rb
