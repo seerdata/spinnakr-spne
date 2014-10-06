@@ -12,7 +12,7 @@ should match up with the uuids in this file
 
 https://github.com/stormasm/spinnakr-spne/blob/master/test/gentoken.rb
 
-Remember that with the Justin's current setup:
+Remember that with Justin's current setup:
 
 ```
 export RACK_ENV=development
