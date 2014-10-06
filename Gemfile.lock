@@ -5,6 +5,8 @@ GEM
     amqp (1.5.0)
       amq-protocol (>= 1.9.2)
       eventmachine
+    bunny (1.4.1)
+      amq-protocol (>= 1.9.2)
     eventmachine (1.0.3)
     kgio (2.9.2)
     mime-types (2.3)
@@ -34,6 +36,7 @@ PLATFORMS
 
 DEPENDENCIES
   amqp
+  bunny
   redis
   rest-client
   sinatra
