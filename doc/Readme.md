@@ -12,7 +12,23 @@ should match up with the uuids in this file
 
 https://github.com/stormasm/spinnakr-spne/blob/master/test/gentoken.rb
 
-By running gentoken.rb you set up redis to have the uuid's populated
+Remember that with the Justin's current setup:
+
+```
+export RACK_ENV=development
+```
+
+This took me awhile to figure out as it was **production** and messages
+were not being published because of the
+config file **spneg/config/development.config.yml**
+
+By running
+
+```
+ruby gentoken.rb
+```
+
+you set up redis to have the uuid's populated
 in redis **DB 10** and redis **DB 11**
 
 Then when you start publishing out events from here
