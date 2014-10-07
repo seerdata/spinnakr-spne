@@ -15,6 +15,10 @@ class Event01
     @redisc.keys '*'
   end
 
+  def get_bad_uuids
+    ['bad uuid1','bad uuid2']
+  end
+
   def get_urls
     arr = Array.new
     ['ios','android','java','python','ruby'].each do |job|
@@ -31,6 +35,7 @@ end
 
 e01 = Event01.new
 uuids = e01.get_uuids
+#uuids = e01.get_bad_uuids
 urls = e01.get_urls
 uuids.each do |uuid|
   print uuid; puts
