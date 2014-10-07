@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'warden'
 require_relative './redistoken'
 
-class Spneg < Sinatra::Base
+class Spnee < Sinatra::Base
 
 # Configure Warden
 use Warden::Manager do |config|

@@ -1,3 +1,3 @@
 
-require './spneg'
-run Spneg.new
+require './spnee'
+run Spnee.new

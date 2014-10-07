@@ -2,7 +2,7 @@ require 'warden'
 require_relative './../lib/generic_manager'
 
 # Spnee API
-class Spneg < Sinatra::Base
+class Spnee < Sinatra::Base
 
   include GenericManager
 
