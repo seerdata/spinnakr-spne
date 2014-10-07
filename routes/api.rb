@@ -15,8 +15,8 @@ class Spnee < Sinatra::Base
     redirect "http://spinnakr.com/api"
   end
 
-  post '/api/1.0/event/:siteid' do
-    handle_generic_event(params[:siteid],params[:data])
+  post '/api/1.0/event' do
+    handle_generic_event(params[:data])
   end
 
   # This is the protected route, without the proper access token you'll be redirected.

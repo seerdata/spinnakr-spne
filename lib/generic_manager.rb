@@ -4,10 +4,9 @@ require_relative './redis/tokentransform'
 
 module GenericManager
 
-  def handle_generic_event(siteid,json)
+  def handle_generic_event(json)
     cmessage = JSON.parse(params[:data])
-    siteid = params[:siteid]
-    print siteid, ' ', cmessage; puts
+    #print cmessage; puts
     t = Transform.new
     tmessage = t.transform_customer_token(cmessage)
     RabbitMQ.publish_message(tmessage, "test.spnee.generic")
