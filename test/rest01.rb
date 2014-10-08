@@ -8,15 +8,13 @@ require 'rest_client'
 
 #RestClient.post "http://localhost:4567/test01", { 'x' => 1 }.to_json, :content_type => :json, :accept => :json
 
-jdata = {:key => 'Hi from Corvallis'}.to_json
-#response = RestClient.post 'http://localhost:4567/generic/visit/151', :data => jdata, :content_type => :json, :accept => :json
+response = RestClient.get 'http://localhost:4567/api/1.0/event/job-skills/python', :content_type => :json, :accept => :json, :access_token => '27ffa057-1878-46ea-9450-34475347e0d2'
+puts response
+
+jdata = {:access_token => '104a5866-b844-4186-9322-19cacdcec298'}.to_json
 response = RestClient.post 'http://localhost:4567/api/1.0/event', :data => jdata, :content_type => :json, :accept => :json
 puts response
 
-response = RestClient.get 'http://localhost:4567/api/1.0/event/job-skills/ios', :content_type => :json, :accept => :json, :access_token => '35b010e6-3a0d-421c-9c25-354a7a1336ae'
-puts response
-
-jdata = {:key => 'Hi from Corvallis'}.to_json
-#response = RestClient.post 'http://localhost:4567/generic/visit/151', :data => jdata, :content_type => :json, :accept => :json
-response = RestClient.post 'http://localhost:4567/api/1.0/event', :data => jdata, :content_type => :json, :accept => :json, :access_token => 'hello-iris'
+jdata = {:access_token => '104a5866-b844-4186-9322-19cacdcec297'}.to_json
+response = RestClient.post 'http://localhost:4567/api/1.0/event', :data => jdata, :content_type => :json, :accept => :json
 puts response

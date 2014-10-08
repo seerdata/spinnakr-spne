@@ -16,7 +16,11 @@ class Spnee < Sinatra::Base
   end
 
   post '/api/1.0/event' do
-    handle_generic_event(params[:data])
+    if(!authenticate_post)
+      return(JSON::generate({ message: "Sorry, this request can not be authenticated. Try again." }))
+    end
+    handle_generic_event
+    JSON::generate({ message: "Thanks for your data." })
   end
 
   # This is the protected route, without the proper access token you'll be redirected.

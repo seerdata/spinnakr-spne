@@ -5,7 +5,7 @@ class Transform
     hm = Hash.new
     rt = RedisToken.new
     data.each do |key,value|
-      if key == 'token_id'
+      if key == 'access_token'
         apkey = rt.get_apkey_from_uuid(value)
         account = rt.get_account_from_apkey(apkey)
         project = rt.get_project_from_apkey(apkey)
