@@ -18,10 +18,9 @@ We have all decided that the customer token that serves as our authentication
 system will be **project** based.  Meaning that for each **project** inside of a customer
 account id we will have a **different** token.
 
-```
-Account 1, Project 1, Token X11
-Account 1, Project 2, Token X12
+If you need to test our system one can use these access tokens to authenticate
+yourself.  Over time these tokens may change, so if for some reason
+they don't work, please check back to this page to make sure the token
+is still valid.
 
-Account 2, Project 1, Token X21
-Account 2, Project 2, Token X22
-```
+* [Access Tokens](https://github.com/spinnakr/Spn.ee/blob/master/doc/genevent/access_tokens.md)
