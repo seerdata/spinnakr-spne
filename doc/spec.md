@@ -1,7 +1,7 @@
 This page will serve as a directoy of specs
 
-[Event Spec]
-(https://github.com/stormasm/spinnakr-generic-ds/blob/master/doc/eventspec.md)
+* [Event Spec](https://github.com/stormasm/spinnakr-generic-ds/blob/master/doc/eventspec.md)
+* [Model Spec](https://github.com/stormasm/spinnakr-generic-ds/blob/master/README.md)
 
 ####Authentication Tokens
 
