@@ -8,6 +8,7 @@ GEM
     bunny (1.4.1)
       amq-protocol (>= 1.9.2)
     eventmachine (1.0.3)
+    json-schema (2.2.5)
     kgio (2.9.2)
     mime-types (2.3)
     netrc (0.7.7)
@@ -37,6 +38,7 @@ PLATFORMS
 DEPENDENCIES
   amqp
   bunny
+  json-schema
   redis
   rest-client
   sinatra

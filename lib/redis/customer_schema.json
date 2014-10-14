@@ -1,0 +1,44 @@
+{ "$schema" : "http://json-schema.org/draft-04/schema#"
+, "type" : "object"
+, "properties" :
+{
+
+"access_token" : {
+  "type" : "string"
+},
+"dimension" : {
+  "type" : "string"
+},
+"key" : {
+  "type" : "string"
+},
+"value" : {
+  "type" : "integer"
+},
+"created_at" : {
+  "type" : "string"
+},
+"interval" :
+    { "type" : "array",
+      "items" :
+      { "anyOf" :
+        [ { "type" : "string", "pattern" : "hours"}
+        , { "type" : "string", "pattern" : "weeks"}
+        , { "type" : "string", "pattern" : "months"}
+        ]
+      }
+    },
+"calculation" :
+    { "type" : "array",
+      "items" :
+      { "anyOf" :
+        [ { "type" : "string", "pattern" : "sum"}
+        , { "type" : "string", "pattern" : "count"}
+        , { "type" : "string", "pattern" : "average"}
+        , { "type" : "string", "pattern" : "standard_deviation"}
+        , { "type" : "string", "pattern" : "linear_regression"}
+        ]
+      }
+    }
+  }
+}

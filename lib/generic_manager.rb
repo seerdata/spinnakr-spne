@@ -1,9 +1,22 @@
 require 'json'
+require 'json-schema'
 require_relative './redis/redisevent'
 require_relative './redis/redistoken'
 require_relative './redis/tokentransform'
 
 module GenericManager
+
+  def validate_json()
+    flag = true
+    schema = File.join(File.dirname(__FILE__),"./redis/customer_schema.json")
+    data = params[:data]
+    errors = JSON::Validator.fully_validate(schema,data, :strict => true)
+    print 'validate_json errors = ', errors; puts
+    if errors.size > 0
+      flag = false
+    end
+    flag
+  end
 
   def authenticate_post()
     flag = false

@@ -16,8 +16,11 @@ class Spnee < Sinatra::Base
   end
 
   post '/api/1.0/event' do
+    if(!validate_json)
+      return(JSON::generate({ message: "Sorry, the JSON document is not in the proper form." }))
+    end
     if(!authenticate_post)
-      return(JSON::generate({ message: "Sorry, this request can not be authenticated. Try again." }))
+      return(JSON::generate({ message: "Sorry, this request can not be authenticated." }))
     end
     handle_generic_event
     JSON::generate({ message: "Thanks for your data." })
