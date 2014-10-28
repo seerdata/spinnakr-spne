@@ -40,8 +40,10 @@ urls = e01.get_urls
 uuids.each do |uuid|
   print uuid; puts
   urls.each do |url|
-    print url; puts
     response = e01.get_data(url,uuid)
-    print response; puts; puts
+    if response.length > 2
+      print url; puts
+      print response; puts; puts
+    end
   end
 end
