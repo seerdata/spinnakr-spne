@@ -40,7 +40,7 @@ class Spnee < Sinatra::Base
       JSON::generate({ message: "Sorry, this request can not be authenticated. Try again." })
   end
 
-  # These API calls are for the recs / answers
+  # These API calls are for the events / recs / answers
 
   get '/api/1.0/event/:dimension/:key' do
     env['warden'].authenticate!(:access_token)
@@ -49,4 +49,16 @@ class Spnee < Sinatra::Base
     project = newuser['project']
     handle_rec_event(dbnumber,project,params[:dimension],params[:key])
   end
+
+  # These API calls are for getting the calculated data
+
+  get '/api/1.0/data/:dimension/:key/:calculation/:interval' do
+    env['warden'].authenticate!(:access_token)
+    newuser = env['warden'].user
+    dbnumber = newuser['dbnumber']
+    project = newuser['project']
+    handle_data_event(dbnumber,project,params[:dimension], params[:key],
+                                       params[:calculation], params[:interval])
+  end
+
 end

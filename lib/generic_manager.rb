@@ -1,5 +1,6 @@
 require 'json'
 require 'json-schema'
+require_relative './redis/redisdata'
 require_relative './redis/redisevent'
 require_relative './redis/redistoken'
 require_relative './redis/tokentransform'
@@ -41,6 +42,13 @@ module GenericManager
     redisevent = RedisEvent.new
     #print dbnumber + ' ' + project + ' ' + dimension + ' ' + key; puts
     redisevent.get_json(dbnumber,project,dimension,key)
+  end
+
+  def handle_data_event(dbnumber,project,dimension,key,calculation,interval)
+    redisdata = RedisData.new
+    print dbnumber + ' ' + project + ' ' + dimension + ' ' + key + ' '
+    print calculation + ' ' + interval; puts
+    redisdata.get_json(dbnumber,project,dimension,key,calculation,interval)
   end
 
 end
