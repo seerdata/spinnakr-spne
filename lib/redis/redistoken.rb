@@ -6,7 +6,6 @@ class RedisToken
 
   def initialize
     @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
-    @db_zero = 0
     @db_uuid = 10
     @db_ap = 11
     @db_dbnumber = 12
@@ -52,7 +51,6 @@ class RedisToken
       @redisc.select @db_ap
       @redisc.hset apkey, 'uuid', uuid
       createDbNumber_from_accountid(account.to_s)
-      @redisc.select @db_zero
     end
     uuid
   end
@@ -72,7 +70,6 @@ class RedisToken
       @redisc.select @db_ap
       @redisc.hset apkey, 'uuid', uuid
       createDbNumber_from_accountid(account.to_s)
-      @redisc.select @db_zero
     end
   end
 
