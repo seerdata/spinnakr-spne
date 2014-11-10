@@ -19,4 +19,9 @@ module AdminManager
     print cmessage; puts
   end
 
+  def handle_admin_account()
+    cmessage = JSON.parse(params[:data])
+    print cmessage; puts
+  end
+
 end
