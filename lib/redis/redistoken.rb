@@ -9,6 +9,7 @@ class RedisToken
     @db_uuid = 10
     @db_ap = 11
     @db_dbnumber = 12
+    @db_admin = 13
     @db_start = 100
     @key_db_next = 'nextdb'
     @key_db_mapping = 'hm:accountid:db'
@@ -134,36 +135,15 @@ class RedisToken
   end
 
   def authenticate_admin(access_token)
-    print 'redistoken authenticate_admin ', access_token; puts
-    true
+    flag = false
+    #print 'redistoken authenticate_admin ', access_token; puts
+    @redisc.select @db_admin
+    hmap = @redisc.hgetall(access_token)
+    if hmap.empty? != true
+      flag = true
+      mytime = Time.now
+      @redisc.hset(access_token,'timestamp',mytime)
+    end
+    flag
   end
 end
-
-=begin
-rw = RedisToken.new
-db_number = rw.getDbNumber_from_accountid('3')
-print 'db_number = ', db_number; puts
-=end
-
-=begin
-rw = RedisToken.new
-uuid11 = rw.get_uuid_from_apkey('1','1')
-puts uuid11
-uuid21 = rw.get_uuid_from_apkey('2','1')
-puts uuid21
-apkey11 = rw.get_apkey_from_uuid(uuid11)
-puts apkey11
-apkey21 = rw.get_apkey_from_uuid(uuid21)
-puts apkey21
-hash11 = rw.get_hash_from_apkey(apkey11)
-puts hash11
-hash21 = rw.get_hash_from_apkey(apkey21)
-puts hash21
-=end
-
-=begin
-# Test Deleting Keys
-
-rw.delete_uuid(uuid11)
-rw.delete_apkey('2','1')
-=end
