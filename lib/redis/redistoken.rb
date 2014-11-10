@@ -39,7 +39,7 @@ class RedisToken
     key = account.to_s + ':' + project.to_s
   end
 
-  def get_uuid_from_apkey(account, project)
+  def create_uuid_from_apkey(account, project)
     apkey = get_apkey_from_account_project account, project
     @redisc.select @db_ap
     uuid = @redisc.hget(apkey,'uuid')
@@ -51,7 +51,7 @@ class RedisToken
       @redisc.hset uuid, 'project', project.to_s
       @redisc.select @db_ap
       @redisc.hset apkey, 'uuid', uuid
-      getDbNumber_from_accountid(account.to_s)
+      createDbNumber_from_accountid(account.to_s)
       @redisc.select @db_zero
     end
     uuid
