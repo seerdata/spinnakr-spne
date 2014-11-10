@@ -5,6 +5,7 @@ require 'yaml'
 require_relative 'lib/redis/configwarden'
 require_relative 'lib/rabbitmq'
 require_relative 'routes/api'
+require_relative 'routes/api_admin'
 
 class Spnee < Sinatra::Base
 
