@@ -9,6 +9,7 @@ class RedisToken
     @db_zero = 0
     @db_uuid = 10
     @db_ap = 11
+    @db_dbnumber = 12
     @db_start = 100
     @key_db_next = 'nextdb'
     @key_db_mapping = 'hm:accountid:db'
@@ -110,7 +111,7 @@ class RedisToken
   end
 
   def getDbNumber_from_accountid(account)
-    @redisc.select @db_ap
+    @redisc.select @db_dbnumber
     db_number = @redisc.hget(@key_db_mapping,account)
     if db_number == nil
       print 'db_number does not exist'; puts
