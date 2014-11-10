@@ -7,29 +7,30 @@ module AdminManager
     flag = false
     hmap = JSON.parse(params[:data])
     rt = RedisToken.new
-    apkey = rt.get_apkey_from_uuid(hmap['access_token'])
-    if apkey != nil
+    access_token = hmap['access_token']
+    valid = rt.authenticate_admin(access_token)
+    if valid == true
       flag = true
     end
     flag
   end
 
   def handle_admin_token()
-    cmessage = JSON.parse(params[:data])
-    print cmessage; puts
+    hmap = JSON.parse(params[:data])
+    print hmap; puts
     rt = RedisToken.new
-    token = cmessage['access_token']
-    account = cmessage['account']
-    project = cmessage['project']
+    token = hmap['token']
+    account = hmap['account']
+    project = hmap['project']
     rt.create_uuid_account_project(token, account, project)
   end
 
   def handle_admin_account()
-    cmessage = JSON.parse(params[:data])
-    print cmessage; puts
+    hmap = JSON.parse(params[:data])
+    print hmap; puts
     rt = RedisToken.new
-    account = cmessage['account']
-    project = cmessage['project']
+    account = hmap['account']
+    project = hmap['project']
     rt.create_uuid_from_apkey(account, project)
   end
 

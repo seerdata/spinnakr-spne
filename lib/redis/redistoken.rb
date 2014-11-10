@@ -133,6 +133,10 @@ class RedisToken
     db_number
   end
 
+  def authenticate_admin(access_token)
+    print 'redistoken authenticate_admin ', access_token; puts
+    true
+  end
 end
 
 =begin
