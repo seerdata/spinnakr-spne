@@ -52,7 +52,7 @@ class Spnee < Sinatra::Base
 
   # These API calls are for getting the calculated data
 
-  get '/api/1.0/data/:dimension/:key/:calculation/:interval' do
+  get '/api/1.0/event/:dimension/:key/:calculation/:interval' do
     env['warden'].authenticate!(:access_token)
     newuser = env['warden'].user
     dbnumber = newuser['dbnumber']
