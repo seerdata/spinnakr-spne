@@ -1,24 +1,19 @@
 require 'json'
-require_relative './redis/redistoken'
+require_relative './redis/redisrule'
 
 module RuleManager
 
   def handle_rule_comparator()
     hmap = JSON.parse(params[:data])
-    print hmap; puts
-    rt = RedisToken.new
-    account = hmap['account']
-    project = hmap['project']
-    #rt.create_uuid_account_project(token, account, project)
+    #print hmap; puts
+    rr = RedisRule.new
+    rr.process_comparator(hmap)
   end
 
   def handle_rule_observer()
     hmap = JSON.parse(params[:data])
-    print hmap; puts
-    rt = RedisToken.new
-    account = hmap['account']
-    project = hmap['project']
-    #rt.create_uuid_from_apkey(account, project)
+    rr = RedisRule.new
+    rr.process_observer(hmap)
   end
 
 end

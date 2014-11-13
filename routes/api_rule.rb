@@ -3,7 +3,7 @@ require_relative './../lib/rule_manager'
 # Spnee API
 class Spnee < Sinatra::Base
 
-  include AdminManager
+  include RuleManager
 
   # this takes in a token, account, and project
   post '/api/1.0/rule/comparator' do
