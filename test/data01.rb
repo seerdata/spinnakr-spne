@@ -7,7 +7,7 @@ class Data01
   def initialize
     @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
     @db_uuid = 10
-    @job_url = 'http://localhost:4567/api/1.0/data/job-skills/'
+    @job_url = 'http://localhost:4567/api/1.0/event/job-skills/'
   end
 
   def get_uuids
