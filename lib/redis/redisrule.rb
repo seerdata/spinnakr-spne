@@ -30,7 +30,14 @@ class RedisRule
   def set_rule_key(rulekey,dbnumber,hmap)
     @redisc.select dbnumber
     hmap.each do |key|
-      print key, ' ', hmap[key]; puts
+      #print key, ' ', hmap[key]; puts
+      print key; puts
+      print key[0]; puts
+      print key[1]; puts
+      if key[0] != 'account' && key[0] != 'project'
+        print 'strings are not account or project'; puts
+        @redisc.hset rulekey, key[0], key[1]
+      end
     end
   end
 
