@@ -27,18 +27,24 @@ class RedisRule
     "hash:" + project + ":" + eventype + ":rule:" + primarykey
   end
 
+  def set_rule_key(rulekey,dbnumber,hmap)
+    @redisc.select dbnumber
+    hmap.each do |key|
+      print key, ' ', hmap[key]; puts
+    end
+  end
+
   def process_comparator(hmap)
     account = hmap['account']
     project = hmap['project']
     dbnumber = @rt.getDbNumber_from_accountid(account)
     primarykey = get_primary_key(dbnumber)
     rulekey = build_rule_key(project,'comparator',primarykey)
-    print 'RedisRule: processing comparator '
     print 'account = ', account, ' project = ', project
-    print ' dbnumber = ', dbnumber; puts
-    print 'operator = ', hmap['operator']; puts
-    print 'primary key = ', primarykey; puts
-    print 'rule key = ', rulekey; puts
+    print ' dbnumber = ', dbnumber
+    print ' primary key = ', primarykey
+    print ' ', rulekey; puts
+    set_rule_key(rulekey,dbnumber,hmap)
   end
 
   def process_observer(hmap)
@@ -47,12 +53,11 @@ class RedisRule
     dbnumber = @rt.getDbNumber_from_accountid(account)
     primarykey = get_primary_key(dbnumber)
     rulekey = build_rule_key(project,'observer',primarykey)
-    print 'RedisRule: processing observer '
     print 'account = ', account, ' project = ', project
-    print ' dbnumber = ', dbnumber; puts
-    print 'trigger = ', hmap['trigger']; puts
-    print 'primary key = ', primarykey; puts
-    print 'rule key = ', rulekey; puts
+    print ' dbnumber = ', dbnumber
+    print ' primary key = ', primarykey
+    print ' ', rulekey; puts
+    set_rule_key(rulekey,dbnumber,hmap)
   end
 
 
