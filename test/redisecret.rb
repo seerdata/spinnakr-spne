@@ -10,7 +10,7 @@ class RedisSecret
   def initialize
     @redisc ||= Redis.new :host => REDIS_OPTIONS['host']
     @db_admin = 13
-    @secret_token = '57ffa057-1878-46ea-9450-34475347e0f5'
+    @secret_token = '104a5866-b844-4186-9322-19cacdcec298'
   end
 
   def create_secret
