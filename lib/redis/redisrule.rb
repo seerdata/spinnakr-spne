@@ -37,13 +37,33 @@ class RedisRule
     end
   end
 
+  def process_set_key(project,rulekey)
+    setkey = "set:" + project + ":rules"
+    print 'setkey = ', setkey; puts
+    @redisc.sadd(setkey,rulekey)
+  end
+
+  def process_interval_key(project,interval,rulekey)
+    intervalkey = "set:" + project + ":rules:" + interval
+    print 'intervalkey = ', intervalkey; puts
+    @redisc.sadd(intervalkey,rulekey)
+  end
+
+  def process_set_and_interval_key(project,interval,rulekey)
+    process_set_key(project,rulekey)
+    process_interval_key(project,interval,rulekey)
+  end
+
   def process_comparator(hmap)
     account = hmap['account']
     project = hmap['project']
+    interval = hmap['interval']
     dbnumber = @rt.getDbNumber_from_accountid(account)
     primarykey = get_primary_key(dbnumber)
     rulekey = build_rule_key(project,'comparator',primarykey)
-    print 'account = ', account, ' project = ', project
+    process_set_and_interval_key(project,interval,rulekey)
+    print 'interval = ', interval
+    print ' account = ', account, ' project = ', project
     print ' dbnumber = ', dbnumber
     print ' primary key = ', primarykey
     print ' ', rulekey; puts
@@ -53,10 +73,13 @@ class RedisRule
   def process_observer(hmap)
     account = hmap['account']
     project = hmap['project']
+    interval = hmap['interval']
     dbnumber = @rt.getDbNumber_from_accountid(account)
     primarykey = get_primary_key(dbnumber)
     rulekey = build_rule_key(project,'observer',primarykey)
-    print 'account = ', account, ' project = ', project
+    process_set_and_interval_key(project,interval,rulekey)
+    print 'interval = ', interval
+    print ' account = ', account, ' project = ', project
     print ' dbnumber = ', dbnumber
     print ' primary key = ', primarykey
     print ' ', rulekey; puts
