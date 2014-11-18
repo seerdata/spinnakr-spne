@@ -5,5 +5,5 @@ jdata1 = {
   :message => 'todo bien tuesday'
 }.to_json
 
-response = RestClient.post 'http://localhost:3000/contact', :data => jdata1, :content_type => :json, :accept => :json
+response = RestClient.post 'http://localhost:3000/contact', jdata1, :content_type => :'application/json'
 puts response
