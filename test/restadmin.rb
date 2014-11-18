@@ -7,7 +7,7 @@ jdata1 = {
   :project => '9'
 }.to_json
 
-response = RestClient.post 'http://localhost:4567/api/1.0/admin/token', :data => jdata1, :content_type => :json, :accept => :json
+response = RestClient.post 'http://localhost:4567/api/1.0/admin/token', jdata1, :content_type => :'application/json'
 puts response
 
 
@@ -17,5 +17,5 @@ jdata2 = {
   :project => '8'
 }.to_json
 
-response = RestClient.post 'http://localhost:4567/api/1.0/admin/account', :data => jdata2, :content_type => :json, :accept => :json
+response = RestClient.post 'http://localhost:4567/api/1.0/admin/account', jdata2, :content_type => :'application/json'
 puts response
