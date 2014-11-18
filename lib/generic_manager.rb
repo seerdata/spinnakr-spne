@@ -7,11 +7,20 @@ require_relative './redis/tokentransform'
 
 module GenericManager
 
+  def get_request_data
+    request.body.rewind
+    data = JSON.parse request.body.read
+  end
+
   def validate_json()
+    rdata = get_request_data
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
+    puts rdata
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
     flag = true
     schema = File.join(File.dirname(__FILE__),"./redis/customer_schema.json")
-    data = params[:data]
-    errors = JSON::Validator.fully_validate(schema,data, :strict => true)
+    #data = params[:data]
+    errors = JSON::Validator.fully_validate(schema, rdata, :strict => true)
     print 'validate_json errors = ', errors; puts
     if errors.size > 0
       flag = false
@@ -20,8 +29,14 @@ module GenericManager
   end
 
   def authenticate_post()
+
+    hmap = get_request_data
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
+    puts hmap
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
+
     flag = false
-    hmap = JSON.parse(params[:data])
+    #hmap = JSON.parse(params[:data])
     rt = RedisToken.new
     apkey = rt.get_apkey_from_uuid(hmap['access_token'])
     if apkey != nil
@@ -31,7 +46,13 @@ module GenericManager
   end
 
   def handle_generic_event()
-    cmessage = JSON.parse(params[:data])
+
+    cmessage = get_request_data
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
+    puts cmessage
+    puts 'UUUUUUUUUUUUUUUUUUUUUU'
+
+    #cmessage = JSON.parse(params[:data])
     #print cmessage; puts
     t = Transform.new
     tmessage = t.transform_customer_token(cmessage)
