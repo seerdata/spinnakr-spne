@@ -3,9 +3,14 @@ require_relative './redis/redistoken'
 
 module AdminManager
 
+  def get_request_data
+    request.body.rewind
+    data = JSON.parse request.body.read
+  end
+
   def authenticate_admin_post()
     flag = false
-    hmap = JSON.parse(params[:data])
+    hmap = get_request_data
     rt = RedisToken.new
     access_token = hmap['access_token']
     valid = rt.authenticate_admin(access_token)
@@ -16,7 +21,7 @@ module AdminManager
   end
 
   def handle_admin_token()
-    hmap = JSON.parse(params[:data])
+    hmap = get_request_data
     print hmap; puts
     rt = RedisToken.new
     token = hmap['token']
@@ -26,7 +31,7 @@ module AdminManager
   end
 
   def handle_admin_account()
-    hmap = JSON.parse(params[:data])
+    hmap = get_request_data
     print hmap; puts
     rt = RedisToken.new
     account = hmap['account']
