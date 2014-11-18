@@ -33,7 +33,7 @@ class Data01
   end
 
   def get_data(url,uuid)
-    response = RestClient.get url, :content_type => :json, :accept => :json, :access_token => uuid
+    response = RestClient.get url, :content_type => :'application/json', :access_token => uuid
   end
 end
 
