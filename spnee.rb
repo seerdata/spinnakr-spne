@@ -7,6 +7,7 @@ require_relative 'lib/rabbitmq'
 require_relative 'routes/api'
 require_relative 'routes/api_admin'
 require_relative 'routes/api_rule'
+require_relative 'routes/api_test'
 
 class Spnee < Sinatra::Base
 
