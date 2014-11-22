@@ -5,7 +5,7 @@ require_relative './redis/redisevent'
 require_relative './redis/redistoken'
 require_relative './redis/tokentransform'
 
-module GenericManager
+module EventManager
 
   def get_request_data
     request.body.rewind

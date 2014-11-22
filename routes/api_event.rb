@@ -1,10 +1,10 @@
 require 'warden'
-require_relative './../lib/generic_manager'
+require_relative './../lib/event_manager'
 
 # Spnee API
 class Spnee < Sinatra::Base
 
-  include GenericManager
+  include EventManager
 
   get '/' do
     content_type :json

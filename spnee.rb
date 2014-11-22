@@ -4,7 +4,7 @@ require 'yaml'
 
 require_relative 'lib/redis/configwarden'
 require_relative 'lib/rabbitmq'
-require_relative 'routes/api'
+require_relative 'routes/api_event'
 require_relative 'routes/api_admin'
 require_relative 'routes/api_rule'
 require_relative 'routes/api_test'
