@@ -1,5 +1,5 @@
 
-Install the Gemset for Spnee
+Install the Gemset for Spn.ee
 
 Bring up Redis
 
