@@ -5,6 +5,7 @@ Install the Gemset for Spn.ee
 git clone git@github.com:stormasm/spinnakr-spne.git
 cd spinnakr-spne
 bundle install
+```
 
 Bring up Redis
 
